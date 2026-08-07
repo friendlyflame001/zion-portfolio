@@ -141,14 +141,15 @@ export function Timeline() {
           >
             <GlassCard className="h-full p-8" hover={false}>
               <p className="font-display text-sm tracking-widest text-accent uppercase">
-                {TIMELINE[active].org}
+                {TIMELINE[active]?.org}
               </p>
-              <h3 className="mt-3 font-display text-2xl font-semibold">{TIMELINE[active].role}</h3>
+              <h3 className="mt-3 font-display text-2xl font-semibold">{TIMELINE[active]?.role}</h3>
               <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-                {TIMELINE[active].copy}
+                {TIMELINE[active]?.copy}
               </p>
-              <p className="mt-6 text-sm text-muted-foreground">{TIMELINE[active].year}</p>
+              <p className="mt-6 text-sm text-muted-foreground">{TIMELINE[active]?.year}</p>
             </GlassCard>
+
           </motion.div>
         </div>
       </div>
