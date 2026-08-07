@@ -122,11 +122,11 @@ export function Hero() {
           <div aria-hidden className="absolute -inset-6 rounded-[2rem] aurora opacity-25 blur-3xl" />
           <div className="glass relative overflow-hidden rounded-[1.75rem] p-2">
             <img
-              src={portrait}
+              src={portraitAsset.url}
               alt="Portrait of Zion Oguntade, full stack developer and product designer"
-              width={1024}
-              height={1280}
-              className="aspect-[4/5] w-full rounded-[1.4rem] object-cover"
+              width={1080}
+              height={1160}
+              className="aspect-[4/5] w-full rounded-[1.4rem] object-cover object-top"
             />
             <div className="absolute inset-x-4 bottom-4 flex items-center justify-between rounded-xl glass px-4 py-3">
               <div>
