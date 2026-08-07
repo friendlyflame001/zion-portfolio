@@ -291,6 +291,60 @@ const UNI_STACK = [
   "Vercel",
 ];
 
+const UNI_SHOTS = [
+  { src: ucFeed.url, label: "Feed", caption: "Stories, trending tags & campus feed" },
+  { src: ucDiscover.url, label: "Discover", caption: "Find students by school, level & dept" },
+  { src: ucChat.url, label: "Chat", caption: "Inbox, requests & communities" },
+  { src: ucProfile.url, label: "Profile", caption: "Verified academic identity" },
+];
+
+function PhoneMockup({
+  src,
+  label,
+  caption,
+  index,
+}: {
+  src: string;
+  label: string;
+  caption: string;
+  index: number;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 28 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.7, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
+      className="group relative"
+    >
+      <div className="glass relative rounded-[2rem] p-[6px] transition-transform duration-500 group-hover:-translate-y-2">
+        <div className="relative overflow-hidden rounded-[1.7rem] border border-border/60 bg-background">
+          <div
+            aria-hidden
+            className="absolute top-1.5 left-1/2 z-10 h-4 w-16 -translate-x-1/2 rounded-full bg-background/90"
+          />
+          <img
+            src={src}
+            alt={`UniConnect ${label} screen`}
+            loading="lazy"
+            width={540}
+            height={1055}
+            className="w-full object-cover"
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-background/10"
+          />
+        </div>
+      </div>
+      <div className="mt-4 text-center">
+        <p className="font-display text-sm font-semibold">{label}</p>
+        <p className="mt-1 text-xs text-muted-foreground">{caption}</p>
+      </div>
+    </motion.div>
+  );
+}
+
 export function Featured() {
   return (
     <section id="uniconnect" className="section-pad relative px-6">
