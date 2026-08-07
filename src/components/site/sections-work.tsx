@@ -1,8 +1,11 @@
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 import { useState } from "react";
 import { ArrowUpRight, Download, Github, Sparkles } from "lucide-react";
-import portrait from "@/assets/portrait.jpg";
-import uniconnect from "@/assets/uniconnect.jpg";
+import portraitAsset from "@/assets/zion-portrait.webp.asset.json";
+import ucFeed from "@/assets/uc-feed.jpg.asset.json";
+import ucDiscover from "@/assets/uc-discover.jpg.asset.json";
+import ucChat from "@/assets/uc-chat.jpg.asset.json";
+import ucProfile from "@/assets/uc-profile.jpg.asset.json";
 import { GlassCard, Magnetic, Pill, Reveal, SectionHeading, TextReveal } from "./primitives";
 import { cn } from "@/lib/utils";
 
@@ -119,11 +122,11 @@ export function Hero() {
           <div aria-hidden className="absolute -inset-6 rounded-[2rem] aurora opacity-25 blur-3xl" />
           <div className="glass relative overflow-hidden rounded-[1.75rem] p-2">
             <img
-              src={portrait}
+              src={portraitAsset.url}
               alt="Portrait of Zion Oguntade, full stack developer and product designer"
-              width={1024}
-              height={1280}
-              className="aspect-[4/5] w-full rounded-[1.4rem] object-cover"
+              width={1080}
+              height={1160}
+              className="aspect-[4/5] w-full rounded-[1.4rem] object-cover object-top"
             />
             <div className="absolute inset-x-4 bottom-4 flex items-center justify-between rounded-xl glass px-4 py-3">
               <div>
@@ -288,6 +291,56 @@ const UNI_STACK = [
   "Vercel",
 ];
 
+const UNI_SHOTS = [
+  { src: ucFeed.url, label: "Feed", caption: "Stories, trending tags & campus feed" },
+  { src: ucDiscover.url, label: "Discover", caption: "Find students by school, level & dept" },
+  { src: ucChat.url, label: "Chat", caption: "Inbox, requests & communities" },
+  { src: ucProfile.url, label: "Profile", caption: "Verified academic identity" },
+];
+
+function PhoneMockup({
+  src,
+  label,
+  caption,
+  index,
+}: {
+  src: string;
+  label: string;
+  caption: string;
+  index: number;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 28 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.7, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
+      className="group relative"
+    >
+      <div className="glass relative rounded-[2rem] p-[6px] transition-transform duration-500 group-hover:-translate-y-2">
+        <div className="relative overflow-hidden rounded-[1.7rem] border border-border/60 bg-background">
+          <img
+            src={src}
+            alt={`UniConnect ${label} screen`}
+            loading="lazy"
+            width={540}
+            height={1055}
+            className="w-full object-cover"
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 rounded-[1.7rem] ring-1 ring-inset ring-foreground/10"
+          />
+        </div>
+      </div>
+      <div className="mt-4 text-center">
+        <p className="font-display text-sm font-semibold">{label}</p>
+        <p className="mt-1 text-xs text-muted-foreground">{caption}</p>
+      </div>
+    </motion.div>
+  );
+}
+
 export function Featured() {
   return (
     <section id="uniconnect" className="section-pad relative px-6">
@@ -303,17 +356,19 @@ export function Featured() {
         />
 
         <Reveal delay={0.12}>
-          <div className="glass mt-14 overflow-hidden rounded-3xl p-2">
-            <img
-              src={uniconnect}
-              alt="UniConnect shown on laptop, tablet and phone mockups"
-              loading="lazy"
-              width={1600}
-              height={1008}
-              className="w-full rounded-2xl object-cover"
+          <div className="relative mt-14">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-x-8 top-10 bottom-10 rounded-[3rem] aurora opacity-20 blur-3xl"
             />
+            <div className="relative grid grid-cols-2 gap-5 sm:gap-8 lg:grid-cols-4">
+              {UNI_SHOTS.map((shot, i) => (
+                <PhoneMockup key={shot.label} {...shot} index={i} />
+              ))}
+            </div>
           </div>
         </Reveal>
+
 
         <div className="mt-10 grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
           <Reveal delay={0.1}>
