@@ -306,17 +306,19 @@ export function Featured() {
         />
 
         <Reveal delay={0.12}>
-          <div className="glass mt-14 overflow-hidden rounded-3xl p-2">
-            <img
-              src={uniconnect}
-              alt="UniConnect shown on laptop, tablet and phone mockups"
-              loading="lazy"
-              width={1600}
-              height={1008}
-              className="w-full rounded-2xl object-cover"
+          <div className="relative mt-14">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-x-8 top-10 bottom-10 rounded-[3rem] aurora opacity-20 blur-3xl"
             />
+            <div className="relative grid grid-cols-2 gap-5 sm:gap-8 lg:grid-cols-4">
+              {UNI_SHOTS.map((shot, i) => (
+                <PhoneMockup key={shot.label} {...shot} index={i} />
+              ))}
+            </div>
           </div>
         </Reveal>
+
 
         <div className="mt-10 grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
           <Reveal delay={0.1}>
