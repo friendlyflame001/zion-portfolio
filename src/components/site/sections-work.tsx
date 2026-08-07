@@ -1,8 +1,11 @@
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 import { useState } from "react";
 import { ArrowUpRight, Download, Github, Sparkles } from "lucide-react";
-import portrait from "@/assets/portrait.jpg";
-import uniconnect from "@/assets/uniconnect.jpg";
+import portraitAsset from "@/assets/zion-portrait.webp.asset.json";
+import ucFeed from "@/assets/uc-feed.jpg.asset.json";
+import ucDiscover from "@/assets/uc-discover.jpg.asset.json";
+import ucChat from "@/assets/uc-chat.jpg.asset.json";
+import ucProfile from "@/assets/uc-profile.jpg.asset.json";
 import { GlassCard, Magnetic, Pill, Reveal, SectionHeading, TextReveal } from "./primitives";
 import { cn } from "@/lib/utils";
 
