@@ -319,10 +319,6 @@ function PhoneMockup({
     >
       <div className="glass relative rounded-[2rem] p-[6px] transition-transform duration-500 group-hover:-translate-y-2">
         <div className="relative overflow-hidden rounded-[1.7rem] border border-border/60 bg-background">
-          <div
-            aria-hidden
-            className="absolute top-1.5 left-1/2 z-10 h-4 w-16 -translate-x-1/2 rounded-full bg-background/90"
-          />
           <img
             src={src}
             alt={`UniConnect ${label} screen`}
@@ -333,7 +329,7 @@ function PhoneMockup({
           />
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-background/10"
+            className="pointer-events-none absolute inset-0 rounded-[1.7rem] ring-1 ring-inset ring-foreground/10"
           />
         </div>
       </div>
