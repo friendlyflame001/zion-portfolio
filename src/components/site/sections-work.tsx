@@ -1,11 +1,11 @@
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 import { useState } from "react";
 import { ArrowUpRight, Download, Github, Sparkles } from "lucide-react";
-import portraitAsset from "@/assets/zion-portrait.webp.asset.json";
-import ucFeed from "@/assets/uc-feed.jpg.asset.json";
-import ucDiscover from "@/assets/uc-discover.jpg.asset.json";
-import ucChat from "@/assets/uc-chat.jpg.asset.json";
-import ucProfile from "@/assets/uc-profile.jpg.asset.json";
+const portraitAsset = { url: "/images/zion-portrait.webp" };
+const ucFeed = { url: "/images/uc-feed.jpg" };
+const ucDiscover = { url: "/images/uc-discover.jpg" };
+const ucChat = { url: "/images/uc-chat.jpg" };
+const ucProfile = { url: "/images/uc-profile.jpg" };
 import { GlassCard, Magnetic, Pill, Reveal, SectionHeading, TextReveal } from "./primitives";
 import { cn } from "@/lib/utils";
 
@@ -76,7 +76,7 @@ export function Hero() {
             className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground"
           >
             I design beautiful digital experiences and build scalable web applications that solve
-            real-world problems.
+            real world problems.
           </motion.p>
 
           <motion.div
@@ -164,7 +164,7 @@ export function About() {
         <div>
           <Reveal delay={0.1}>
             <p className="text-lg leading-relaxed text-muted-foreground">
-              I'm Zion — a founder and full stack developer working at the intersection of
+              I'm Zion a founder and full stack developer working at the intersection of
               engineering craft and visual design. Over the last{" "}
               <span className="text-foreground">6 years</span> I've shipped social platforms,
               commerce experiences, dashboards and brand systems for startups and student
@@ -174,7 +174,7 @@ export function About() {
           <Reveal delay={0.18}>
             <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
               I care about the details most people never notice: easing curves, optical spacing,
-              type rhythm, first-paint speed. I prototype in Figma, build in React and TypeScript,
+              type rhythm, first paint speed. I prototype in Figma, build in React and TypeScript,
               and treat accessibility and performance as part of the design, not an afterthought.
             </p>
           </Reveal>
@@ -288,7 +288,7 @@ const UNI_STACK = [
   "PostgreSQL",
   "Supabase",
   "Cloudinary",
-  "Vercel",
+  "Render",
 ];
 
 const UNI_SHOTS = [
@@ -351,7 +351,7 @@ export function Featured() {
       <div className="relative mx-auto max-w-6xl">
         <SectionHeading
           eyebrow="Featured Project"
-          title="UniConnect — the campus network students actually open every day."
+          title="UniConnect; the campus network students actually open every day."
           description="A university social platform connecting students through communities, messaging, announcements, networking and collaboration."
         />
 
@@ -378,7 +378,7 @@ export function Featured() {
               ))}
             </div>
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-              UniConnect gives every faculty, club and study group its own space — with realtime
+              UniConnect gives every faculty, club and study group its own space with realtime
               messaging, verified announcements, an events feed and a networking layer that matches
               students by course, skill and interest. Built for slow campus networks, it ships
               under 100kb of critical JS and works offline-first for the feed.
@@ -404,13 +404,13 @@ export function Featured() {
               </p>
               <div className="mt-5 grid gap-3">
                 <a
-                  href="https://uniconnect.app"
+                  href="https://uniconnectng.com.ng"
                   className="inline-flex items-center justify-between rounded-xl aurora px-5 py-3 text-sm font-medium text-primary-foreground"
                 >
                   Live Demo <ArrowUpRight className="size-4" />
                 </a>
                 <a
-                  href="https://github.com"
+                  href="https://github.com/friendlyflame001/zion-portfolio"
                   className="inline-flex items-center justify-between rounded-xl border border-border px-5 py-3 text-sm transition-colors hover:text-accent"
                 >
                   GitHub <Github className="size-4" />
@@ -459,7 +459,7 @@ const PROJECTS: Project[] = [
   },
   {
     title: "Aurora Design System",
-    description: "A 120-component design system with tokens, docs and dark-first theming.",
+    description: "A 120 component design system with tokens, docs and dark-first theming.",
     tech: ["Figma", "Storybook", "TypeScript"],
     image:
       "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1200&q=80",
@@ -475,7 +475,7 @@ const PROJECTS: Project[] = [
   },
   {
     title: "Northwind Booking",
-    description: "Multi-tenant booking platform with calendar sync, payments and SMS reminders.",
+    description: "Multi tenant booking platform with calendar sync, payments and SMS reminders.",
     tech: ["Supabase", "Express", "Railway"],
     image:
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",

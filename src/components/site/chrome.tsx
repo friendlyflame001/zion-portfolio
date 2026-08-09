@@ -228,14 +228,14 @@ export function Footer() {
         </nav>
         <div className="flex items-center gap-3">
           <a
-            href="https://github.com"
+            href="https://github.com/friendlyflame001"
             aria-label="GitHub"
             className="grid size-10 place-items-center rounded-xl border border-border transition-colors hover:text-accent"
           >
             <Github className="size-4" />
           </a>
           <a
-            href="https://linkedin.com"
+            href="http://www.linkedin.com/in/stephenoguntadeayziora"
             aria-label="LinkedIn"
             className="grid size-10 place-items-center rounded-xl border border-border transition-colors hover:text-accent"
           >

@@ -24,7 +24,7 @@ import { cn } from "@/lib/utils";
 /* -------------------------------------------------------------- Services */
 
 const SERVICES = [
-  { title: "Full Stack Development", icon: Braces, copy: "React, Next.js, Node and PostgreSQL — typed end to end." },
+  { title: "Full Stack Development", icon: Braces, copy: "React, Next.js, Node and PostgreSQL typed end to end." },
   { title: "UI/UX Design", icon: Layers, copy: "Research, flows, wireframes and high-fidelity interfaces." },
   { title: "Brand Identity", icon: Sparkles, copy: "Positioning, type systems, color and full brand guidelines." },
   { title: "Logo Design", icon: PenTool, copy: "Distinctive marks that scale from favicon to billboard." },
@@ -68,7 +68,7 @@ const TIMELINE = [
     year: "2024 — Present",
     role: "Founder & Product Engineer",
     org: "UniConnect",
-    copy: "Leading product, design and engineering for a campus social network serving 12,000+ students.",
+    copy: "Leading product, design and engineering for a campus social network to serve 40,000+ students.",
   },
   {
     year: "2023 — 2024",
@@ -162,7 +162,7 @@ export function Timeline() {
 const TESTIMONIALS = [
   {
     quote:
-      "Zion shipped in three weeks what our previous team scoped for three months — and it looked better than the Figma.",
+      "Zion shipped in three weeks what our previous team scoped for three months and it looked better than the Figma.",
     name: "Amara Eze",
     role: "Co-founder, Vela Commerce",
   },
@@ -294,7 +294,7 @@ const POSTS = [
     tag: "Design Systems",
   },
   {
-    title: "Shipping as a solo founder-engineer",
+    title: "Shipping as a solo founder engineer",
     excerpt: "The workflow, tooling and boundaries that let one person run product and code.",
     date: "Feb 2026",
     read: "9 min",
@@ -339,11 +339,11 @@ export function Blog() {
 /* --------------------------------------------------------------- Contact */
 
 const SOCIALS = [
-  { label: "LinkedIn", icon: Linkedin, href: "https://linkedin.com" },
-  { label: "GitHub", icon: Github, href: "https://github.com" },
-  { label: "X", icon: MessageCircle, href: "https://x.com" },
+  { label: "LinkedIn", icon: Linkedin, href: "http://www.linkedin.com/in/stephenoguntadeayziora" },
+  { label: "GitHub", icon: Github, href: "https://github.com/friendlyflame001" },
+  { label: "X", icon: MessageCircle, href: "https://x.com/ZionOguntade" },
   { label: "Email", icon: Mail, href: "mailto:hello@zionoguntade.com" },
-  { label: "WhatsApp", icon: Smartphone, href: "https://wa.me/2340000000000" },
+  { label: "WhatsApp", icon: Smartphone, href: "https://wa.me/2347041785191" },
 ];
 
 export function Contact() {
