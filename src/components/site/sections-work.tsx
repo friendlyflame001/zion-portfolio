@@ -1,11 +1,11 @@
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 import { useState } from "react";
 import { ArrowUpRight, Download, Github, Sparkles } from "lucide-react";
-const portraitAsset = { url: "/images/zion-portrait.webp" };
-const ucFeed = { url: "/images/uc-feed.jpg" };
-const ucDiscover = { url: "/images/uc-discover.jpg" };
-const ucChat = { url: "/images/uc-chat.jpg" };
-const ucProfile = { url: "/images/uc-profile.jpg" };
+const portraitAsset = { url: "/images/zion-portrait.jpeg" };
+const ucFeed = { url: "/images/uc-feed.jpeg" };
+const ucDiscover = { url: "/images/uc-discover.jpeg" };
+const ucChat = { url: "/images/uc-chat.jpeg" };
+const ucProfile = { url: "/images/uc-profile.jpeg" };
 import { GlassCard, Magnetic, Pill, Reveal, SectionHeading, TextReveal } from "./primitives";
 import { cn } from "@/lib/utils";
 
