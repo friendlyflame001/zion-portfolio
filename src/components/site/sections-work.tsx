@@ -385,7 +385,7 @@ export function Featured() {
             </p>
             <ul className="mt-6 grid gap-2 text-sm text-muted-foreground sm:grid-cols-2">
               {[
-                "12,000+ student accounts",
+                "2,000+ student accounts",
                 "Realtime messaging & presence",
                 "Role-based moderation tooling",
                 "99.9% uptime since launch",

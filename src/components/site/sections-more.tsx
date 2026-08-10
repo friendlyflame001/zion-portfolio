@@ -253,8 +253,8 @@ const STATS = [
   { label: "Projects Completed", value: 84, suffix: "+" },
   { label: "Happy Clients", value: 46, suffix: "" },
   { label: "Years Experience", value: 6, suffix: "" },
-  { label: "GitHub Contributions", value: 3200, suffix: "+" },
-  { label: "Apps Built", value: 21, suffix: "" },
+  { label: "GitHub Contributions", value: 800, suffix: "+" },
+  { label: "Apps Built", value: 3, suffix: "" },
 ];
 
 export function Stats() {
