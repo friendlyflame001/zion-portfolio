@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { useState } from "react";
 import { ArrowUpRight, Download, Github } from "lucide-react";
-const portraitAsset = { url: "/images/zion-portrait.jpeg" };
+const portraitAsset = { url: "/images/zion-portrait-september-2026.jpg" };
 const ucFeed = { url: "/images/uc-feed.jpeg" };
 const ucDiscover = { url: "/images/uc-discover.jpeg" };
 const ucChat = { url: "/images/uc-chat.jpeg" };
