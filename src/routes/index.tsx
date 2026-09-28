@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { BackToTop, CursorGlow, Footer, Loader, Nav, ScrollProgress } from "@/components/site/chrome";
+import { BackToTop, Footer, Nav } from "@/components/site/chrome";
+import { MotionConfig } from "motion/react";
 import { About, Featured, Hero, Projects, Skills } from "@/components/site/sections-work";
 import {
   Blog,
@@ -46,12 +47,12 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <>
-      <Loader />
-      <ScrollProgress />
-      <CursorGlow />
+    <MotionConfig reducedMotion="user">
+      <a className="skip-link" href="#main">
+        Skip to content
+      </a>
       <Nav />
-      <main>
+      <main id="main">
         <Hero />
         <About />
         <Skills />
@@ -67,6 +68,6 @@ function Index() {
       </main>
       <Footer />
       <BackToTop />
-    </>
+    </MotionConfig>
   );
 }

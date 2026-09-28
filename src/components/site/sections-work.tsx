@@ -1,142 +1,65 @@
-import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
+import { motion } from "motion/react";
 import { useState } from "react";
-import { ArrowUpRight, Download, Github, Sparkles } from "lucide-react";
+import { ArrowUpRight, Download, Github } from "lucide-react";
 const portraitAsset = { url: "/images/zion-portrait.jpeg" };
 const ucFeed = { url: "/images/uc-feed.jpeg" };
 const ucDiscover = { url: "/images/uc-discover.jpeg" };
 const ucChat = { url: "/images/uc-chat.jpeg" };
 const ucProfile = { url: "/images/uc-profile.jpeg" };
-import { GlassCard, Magnetic, Pill, Reveal, SectionHeading, TextReveal } from "./primitives";
+import { GlassCard, Magnetic, Pill, Reveal, SectionHeading } from "./primitives";
 import { cn } from "@/lib/utils";
 
 /* ------------------------------------------------------------------ Hero */
 
 export function Hero() {
-  const mx = useMotionValue(0);
-  const my = useMotionValue(0);
-  const sx = useSpring(mx, { stiffness: 90, damping: 20 });
-  const sy = useSpring(my, { stiffness: 90, damping: 20 });
-  const rotateY = useTransform(sx, [-0.5, 0.5], [8, -8]);
-  const rotateX = useTransform(sy, [-0.5, 0.5], [-8, 8]);
-  const shiftX = useTransform(sx, [-0.5, 0.5], [18, -18]);
-
   return (
-    <section
-      id="top"
-      onMouseMove={(e) => {
-        const r = e.currentTarget.getBoundingClientRect();
-        mx.set((e.clientX - r.left) / r.width - 0.5);
-        my.set((e.clientY - r.top) / r.height - 0.5);
-      }}
-      className="relative overflow-hidden px-6 pt-36 pb-24 sm:pt-44 sm:pb-32"
-    >
-      <div aria-hidden className="pointer-events-none absolute inset-0 grid-lines opacity-70" />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -top-40 -left-32 size-[520px] rounded-full bg-primary/30 floating-orb"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -right-32 top-24 size-[460px] rounded-full bg-violet/25 floating-orb [animation-delay:-6s]"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute bottom-0 left-1/3 size-[380px] rounded-full bg-cyan/20 floating-orb [animation-delay:-12s]"
-      />
-
-      <div className="relative mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-[1.15fr_0.85fr]">
-        <div>
-          <motion.span
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary/50 px-3 py-1.5 text-xs text-muted-foreground"
-          >
-            <span className="size-1.5 animate-pulse rounded-full bg-accent" />
+    <section id="top" className="hero-section">
+      <div className="hero-layout">
+        <div className="hero-copy">
+          <p className="availability">
+            <span aria-hidden />
             Available for select freelance & founding roles
-          </motion.span>
-
-          <h1 className="mt-6 font-display text-[clamp(2.6rem,6.4vw,4.6rem)] leading-[0.98] font-semibold text-balance">
-            <TextReveal text="Hi, I'm Zion Oguntade." delay={0.15} />
+          </p>
+          <h1>
+            <span className="hero-greeting">Hi, I'm</span>Zion
+            <br />
+            <em>Oguntade.</em>
           </h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="mt-5 font-display text-sm tracking-[0.18em] text-muted-foreground uppercase sm:text-base"
-          >
+          <p className="hero-roles">
             Founder • Full Stack Developer • UI/UX Designer • Graphic Designer
-          </motion.p>
-
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.62 }}
-            className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground"
-          >
+          </p>
+          <p className="hero-description">
             I design beautiful digital experiences and build scalable web applications that solve
             real world problems.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.75 }}
-            className="mt-10 flex flex-wrap items-center gap-3"
-          >
-            <Magnetic>
-              <a
-                href="#work"
-                className="inline-flex items-center gap-2 rounded-xl aurora px-6 py-3.5 text-sm font-medium text-primary-foreground shadow-[var(--shadow-elevate)]"
-              >
-                View Projects <ArrowUpRight className="size-4" />
-              </a>
-            </Magnetic>
-            <Magnetic>
-              <a
-                href="/resume.pdf"
-                className="glass inline-flex items-center gap-2 rounded-xl px-6 py-3.5 text-sm font-medium transition-colors hover:text-accent"
-              >
-                <Download className="size-4" /> Download Resume
-              </a>
-            </Magnetic>
-            <Magnetic>
-              <a
-                href="#uniconnect"
-                className="inline-flex items-center gap-2 rounded-xl border border-border px-6 py-3.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-              >
-                <Sparkles className="size-4 text-gold" /> See UniConnect
-              </a>
-            </Magnetic>
-          </motion.div>
-        </div>
-
-        <motion.div
-          style={{ rotateX, rotateY, x: shiftX, transformPerspective: 1000 }}
-          initial={{ opacity: 0, scale: 0.94 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="relative mx-auto w-full max-w-sm"
-        >
-          <div aria-hidden className="absolute -inset-6 rounded-[2rem] aurora opacity-25 blur-3xl" />
-          <div className="glass relative overflow-hidden rounded-[1.75rem] p-2">
-            <img
-              src={portraitAsset.url}
-              alt="Portrait of Zion Oguntade, full stack developer and product designer"
-              width={1080}
-              height={1160}
-              className="aspect-[4/5] w-full rounded-[1.4rem] object-cover object-top"
-            />
-            <div className="absolute inset-x-4 bottom-4 flex items-center justify-between rounded-xl glass px-4 py-3">
-              <div>
-                <p className="font-display text-sm font-semibold">Zion Oguntade</p>
-                <p className="text-xs text-muted-foreground">Founder, UniConnect</p>
-              </div>
-              <span className="text-xs text-gold">Lagos, NG</span>
-            </div>
+          </p>
+          <div className="hero-actions">
+            <a href="#work" className="primary-link">
+              View Projects <ArrowUpRight size={18} />
+            </a>
+            <a href="/resume.pdf" className="resume-link">
+              <Download size={17} /> Download Resume
+            </a>
           </div>
-        </motion.div>
+          <a href="#uniconnect" className="hero-feature-link">
+            See UniConnect <ArrowUpRight size={17} />
+          </a>
+        </div>
+        <figure className="hero-portrait">
+          <img
+            src={portraitAsset.url}
+            alt="Portrait of Zion Oguntade, full stack developer and product designer"
+            width={1028}
+            height={1280}
+            fetchPriority="high"
+          />
+          <figcaption>
+            <div>
+              <strong>Zion Oguntade</strong>
+              <span>Founder, UniConnect</span>
+            </div>
+            <span>Lagos, NG</span>
+          </figcaption>
+        </figure>
       </div>
     </section>
   );
@@ -164,8 +87,8 @@ export function About() {
         <div>
           <Reveal delay={0.1}>
             <p className="text-lg leading-relaxed text-muted-foreground">
-              I'm Zion a founder and full stack developer working at the intersection of
-              engineering craft and visual design. Over the last{" "}
+              I'm Zion a founder and full stack developer working at the intersection of engineering
+              craft and visual design. Over the last{" "}
               <span className="text-foreground">6 years</span> I've shipped social platforms,
               commerce experiences, dashboards and brand systems for startups and student
               communities across Africa.
@@ -241,15 +164,13 @@ export function Skills() {
           title="A full stack toolkit, sharpened on real products."
           description="Everything I use day to day to take an idea from a blank Figma canvas to a deployed, monitored product."
         />
-        <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <div className="capability-grid mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {SKILLS.map((cat, i) => (
             <Reveal key={cat.group} delay={i * 0.07}>
               <GlassCard className="h-full p-6">
                 <div className="flex items-baseline justify-between">
                   <h3 className="font-display text-lg font-semibold">{cat.group}</h3>
-                  <span className="font-display text-xs text-muted-foreground">
-                    0{i + 1}
-                  </span>
+                  <span className="font-display text-xs text-muted-foreground">0{i + 1}</span>
                 </div>
                 <div className="mt-5 flex flex-wrap gap-2">
                   {cat.items.map((s) => (
@@ -298,25 +219,9 @@ const UNI_SHOTS = [
   { src: ucProfile.url, label: "Profile", caption: "Verified academic identity" },
 ];
 
-function PhoneMockup({
-  src,
-  label,
-  caption,
-  index,
-}: {
-  src: string;
-  label: string;
-  caption: string;
-  index: number;
-}) {
+function PhoneMockup({ src, label, caption }: { src: string; label: string; caption: string }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 28 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.7, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
-      className="group relative"
-    >
+    <div className="group relative">
       <div className="glass relative rounded-[2rem] p-[6px] transition-transform duration-500 group-hover:-translate-y-2">
         <div className="relative overflow-hidden rounded-[1.7rem] border border-border/60 bg-background">
           <img
@@ -337,7 +242,7 @@ function PhoneMockup({
         <p className="font-display text-sm font-semibold">{label}</p>
         <p className="mt-1 text-xs text-muted-foreground">{caption}</p>
       </div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -362,13 +267,12 @@ export function Featured() {
               className="pointer-events-none absolute inset-x-8 top-10 bottom-10 rounded-[3rem] aurora opacity-20 blur-3xl"
             />
             <div className="relative grid grid-cols-2 gap-5 sm:gap-8 lg:grid-cols-4">
-              {UNI_SHOTS.map((shot, i) => (
-                <PhoneMockup key={shot.label} {...shot} index={i} />
+              {UNI_SHOTS.map((shot) => (
+                <PhoneMockup key={shot.label} {...shot} />
               ))}
             </div>
           </div>
         </Reveal>
-
 
         <div className="mt-10 grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
           <Reveal delay={0.1}>
@@ -380,8 +284,8 @@ export function Featured() {
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
               UniConnect gives every faculty, club and study group its own space with realtime
               messaging, verified announcements, an events feed and a networking layer that matches
-              students by course, skill and interest. Built for slow campus networks, it ships
-              under 100kb of critical JS and works offline-first for the feed.
+              students by course, skill and interest. Built for slow campus networks, it ships under
+              100kb of critical JS and works offline-first for the feed.
             </p>
             <ul className="mt-6 grid gap-2 text-sm text-muted-foreground sm:grid-cols-2">
               {[
@@ -501,25 +405,24 @@ export function Projects() {
     <section id="work" className="section-pad relative px-6">
       <div className="mx-auto max-w-6xl">
         <div className="flex flex-wrap items-end justify-between gap-8">
-          <SectionHeading
-            eyebrow="Selected Work"
-            title="Products, systems and identities."
-          />
+          <SectionHeading eyebrow="Selected Work" title="Products, systems and identities." />
           <Reveal delay={0.1}>
             <div
-              role="tablist"
+              role="group"
               aria-label="Filter projects"
               className="glass flex gap-1 rounded-xl p-1"
             >
               {FILTERS.map((f) => (
                 <button
                   key={f}
-                  role="tab"
-                  aria-selected={filter === f}
+                  type="button"
+                  aria-pressed={filter === f}
                   onClick={() => setFilter(f)}
                   className={cn(
                     "relative rounded-lg px-4 py-2 text-sm transition-colors",
-                    filter === f ? "text-primary-foreground" : "text-muted-foreground hover:text-foreground",
+                    filter === f
+                      ? "text-primary-foreground"
+                      : "text-muted-foreground hover:text-foreground",
                   )}
                 >
                   {filter === f ? (
@@ -536,14 +439,12 @@ export function Projects() {
           </Reveal>
         </div>
 
-        <motion.div layout className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <motion.div layout className="project-grid mt-12 grid gap-10 md:grid-cols-2">
           {visible.map((p, i) => (
             <motion.article
               layout
               key={p.title}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
+              initial={false}
               transition={{ duration: 0.6, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
               className="group glass card-hover overflow-hidden rounded-2xl"
             >

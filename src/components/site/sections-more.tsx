@@ -24,14 +24,42 @@ import { cn } from "@/lib/utils";
 /* -------------------------------------------------------------- Services */
 
 const SERVICES = [
-  { title: "Full Stack Development", icon: Braces, copy: "React, Next.js, Node and PostgreSQL typed end to end." },
-  { title: "UI/UX Design", icon: Layers, copy: "Research, flows, wireframes and high-fidelity interfaces." },
-  { title: "Brand Identity", icon: Sparkles, copy: "Positioning, type systems, color and full brand guidelines." },
-  { title: "Logo Design", icon: PenTool, copy: "Distinctive marks that scale from favicon to billboard." },
-  { title: "Web Applications", icon: Braces, copy: "Dashboards, marketplaces and social platforms built to scale." },
+  {
+    title: "Full Stack Development",
+    icon: Braces,
+    copy: "React, Next.js, Node and PostgreSQL typed end to end.",
+  },
+  {
+    title: "UI/UX Design",
+    icon: Layers,
+    copy: "Research, flows, wireframes and high-fidelity interfaces.",
+  },
+  {
+    title: "Brand Identity",
+    icon: Sparkles,
+    copy: "Positioning, type systems, color and full brand guidelines.",
+  },
+  {
+    title: "Logo Design",
+    icon: PenTool,
+    copy: "Distinctive marks that scale from favicon to billboard.",
+  },
+  {
+    title: "Web Applications",
+    icon: Braces,
+    copy: "Dashboards, marketplaces and social platforms built to scale.",
+  },
   { title: "Mobile Apps", icon: Smartphone, copy: "Responsive PWAs and React Native experiences." },
-  { title: "Graphics Design", icon: Palette, copy: "Campaign visuals, social kits and print-ready collateral." },
-  { title: "Consulting", icon: Users, copy: "Product strategy, design audits and technical direction." },
+  {
+    title: "Graphics Design",
+    icon: Palette,
+    copy: "Campaign visuals, social kits and print-ready collateral.",
+  },
+  {
+    title: "Consulting",
+    icon: Users,
+    copy: "Product strategy, design audits and technical direction.",
+  },
 ];
 
 export function Services() {
@@ -43,7 +71,7 @@ export function Services() {
           title="One partner, from first sketch to production deploy."
           align="center"
         />
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="service-grid mt-14 grid gap-x-10 sm:grid-cols-2">
           {SERVICES.map((s, i) => (
             <Reveal key={s.title} delay={i * 0.05}>
               <GlassCard className="h-full p-6">
@@ -109,7 +137,9 @@ export function Timeline() {
                     aria-pressed={active === i}
                     className={cn(
                       "flex w-full items-start gap-4 rounded-xl py-3 pr-4 pl-0 text-left transition-colors",
-                      active === i ? "text-foreground" : "text-muted-foreground hover:text-foreground",
+                      active === i
+                        ? "text-foreground"
+                        : "text-muted-foreground hover:text-foreground",
                     )}
                   >
                     <span
@@ -149,7 +179,6 @@ export function Timeline() {
               </p>
               <p className="mt-6 text-sm text-muted-foreground">{TIMELINE[active]?.year}</p>
             </GlassCard>
-
           </motion.div>
         </div>
       </div>
@@ -182,7 +211,7 @@ const TESTIMONIALS = [
 
 export function Testimonials() {
   return (
-    <section className="section-pad relative px-6">
+    <section id="testimonials" className="section-pad relative px-6">
       <div className="mx-auto max-w-6xl">
         <SectionHeading eyebrow="Testimonials" title="What collaborators say." align="center" />
         <div className="mt-14 grid gap-5 lg:grid-cols-3">
@@ -220,7 +249,7 @@ const CERTS = [
 
 export function Certifications() {
   return (
-    <section className="section-pad relative px-6">
+    <section id="certifications" className="section-pad relative px-6">
       <div className="mx-auto max-w-6xl">
         <SectionHeading eyebrow="Certifications" title="Credentials, verified." />
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -259,7 +288,7 @@ const STATS = [
 
 export function Stats() {
   return (
-    <section className="relative px-6 py-20">
+    <section id="numbers" className="relative px-6 py-20">
       <div className="mx-auto max-w-6xl">
         <div className="glass grid gap-8 rounded-3xl px-8 py-12 sm:grid-cols-2 lg:grid-cols-5">
           {STATS.map((s, i) => (
@@ -306,10 +335,7 @@ export function Blog() {
   return (
     <section id="writing" className="section-pad relative px-6">
       <div className="mx-auto max-w-6xl">
-        <SectionHeading
-          eyebrow="Writing"
-          title="Notes on craft, performance and building alone."
-        />
+        <SectionHeading eyebrow="Writing" title="Notes on craft, performance and building alone." />
         <div className="mt-12 grid gap-5 lg:grid-cols-3">
           {POSTS.map((p, i) => (
             <Reveal key={p.title} delay={i * 0.07}>

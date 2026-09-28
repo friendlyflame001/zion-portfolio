@@ -1,4 +1,4 @@
-import { motion, useScroll, useSpring, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import { useEffect, useState } from "react";
 import { ArrowUp, Github, Linkedin, Mail, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -14,44 +14,6 @@ const NAV = [
   { label: "Contact", href: "#contact" },
 ];
 
-/** Thin gradient progress bar pinned to the top of the viewport. */
-export function ScrollProgress() {
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, { stiffness: 140, damping: 26, restDelta: 0.001 });
-  return (
-    <motion.div
-      aria-hidden
-      style={{ scaleX }}
-      className="fixed inset-x-0 top-0 z-[60] h-0.5 origin-left aurora"
-    />
-  );
-}
-
-/** Soft light that follows the pointer on desktop. */
-export function CursorGlow() {
-  const [pos, setPos] = useState({ x: -500, y: -500 });
-  useEffect(() => {
-    if (window.matchMedia("(pointer: coarse)").matches) return;
-    const onMove = (e: MouseEvent) => setPos({ x: e.clientX, y: e.clientY });
-    window.addEventListener("mousemove", onMove);
-    return () => window.removeEventListener("mousemove", onMove);
-  }, []);
-
-  return (
-    <div
-      aria-hidden
-      className="pointer-events-none fixed z-[55] hidden size-[420px] rounded-full opacity-40 blur-[110px] md:block"
-      style={{
-        left: pos.x - 210,
-        top: pos.y - 210,
-        background:
-          "radial-gradient(circle, color-mix(in oklab, var(--primary) 60%, transparent), transparent 65%)",
-        transition: "left 220ms ease-out, top 220ms ease-out",
-      }}
-    />
-  );
-}
-
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -64,12 +26,12 @@ export function Nav() {
   }, []);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 px-4 pt-3 sm:px-6">
+    <header className="site-header fixed inset-x-0 top-0 z-50 px-4 sm:px-6">
       <nav
         aria-label="Primary"
         className={cn(
-          "mx-auto flex max-w-6xl items-center justify-between rounded-2xl px-4 py-3 transition-all duration-500 sm:px-5",
-          scrolled ? "glass" : "border border-transparent",
+          "site-nav mx-auto flex max-w-6xl items-center justify-between py-5 transition-colors",
+          scrolled ? "nav-scrolled" : "",
         )}
       >
         <a href="#top" className="font-display text-sm font-semibold tracking-tight">
@@ -103,7 +65,11 @@ export function Nav() {
             type="button"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
+            aria-controls="mobile-navigation"
             onClick={() => setOpen((v) => !v)}
+            onKeyDown={(e) => {
+              if (e.key === "Escape") setOpen(false);
+            }}
             className="grid size-11 place-items-center rounded-xl border border-border text-foreground lg:hidden"
           >
             {open ? <X className="size-5" /> : <Menu className="size-5" />}
@@ -114,11 +80,20 @@ export function Nav() {
       <AnimatePresence>
         {open ? (
           <motion.div
+            onKeyDown={(e) => {
+              if (e.key === "Escape") {
+                setOpen(false);
+                document
+                  .querySelector<HTMLButtonElement>('[aria-controls="mobile-navigation"]')
+                  ?.focus();
+              }
+            }}
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.25 }}
-            className="glass mx-auto mt-2 max-w-6xl rounded-2xl p-3 lg:hidden"
+            id="mobile-navigation"
+            className="mobile-navigation glass mx-auto mb-3 max-w-6xl p-3 lg:hidden"
           >
             <ul className="grid gap-1">
               {NAV.map((item) => (
@@ -162,47 +137,6 @@ export function BackToTop() {
         >
           <ArrowUp className="size-5" />
         </motion.button>
-      ) : null}
-    </AnimatePresence>
-  );
-}
-
-/** Brief entry animation on first paint. */
-export function Loader() {
-  const [done, setDone] = useState(false);
-  useEffect(() => {
-    const t = setTimeout(() => setDone(true), 1200);
-    return () => clearTimeout(t);
-  }, []);
-
-  return (
-    <AnimatePresence>
-      {!done ? (
-        <motion.div
-          key="loader"
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="fixed inset-0 z-[100] grid place-items-center bg-background"
-        >
-          <div className="text-center">
-            <motion.p
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="font-display text-lg font-semibold tracking-tight"
-            >
-              Zion Oguntade
-            </motion.p>
-            <div className="mt-4 h-px w-40 overflow-hidden bg-border">
-              <motion.div
-                initial={{ x: "-100%" }}
-                animate={{ x: "0%" }}
-                transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
-                className="h-px w-full aurora"
-              />
-            </div>
-          </div>
-        </motion.div>
       ) : null}
     </AnimatePresence>
   );
